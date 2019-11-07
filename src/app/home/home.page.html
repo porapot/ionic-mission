@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of data.campaigns">
+      <img [src]="item.cover_image">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card *ngFor="let item of data.shortcuts">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <h5>
+            {{item.name}}
+          </h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" *ngFor="let ac of item.actions">
+          <div>
+            <img [src]="ac.image">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card *ngFor="let item of data.campaigns">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <h5>
+            {{item.name}}
+          </h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col [size]="item.col_size" *ngFor="let ca of item.products">
+          <div>
+            <img [src]="ca.images[0]">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>
