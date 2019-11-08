@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,10 @@ import { HomeService } from './home.service';
 export class HomePage implements OnInit {
   data: any;
 
-  constructor(private homeservice: HomeService) { }
+  constructor(
+    private homeservice: HomeService,
+    private route: Router
+    ) { }
   slideOpts = {
     initialSlide: 1,
     speed: 400,
@@ -21,5 +25,7 @@ export class HomePage implements OnInit {
       console.log(res);
     });
   }
-
+  clickMore(){
+    this.route.navigate(['productlist']);
+  }
 }

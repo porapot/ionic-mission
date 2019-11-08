@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>productlist</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of data.campaigns">
+      <img [src]="item.cover_image">
+    </ion-slide>
+  </ion-slides>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let item of data.campaigns">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <h3>{{item.description}}</h3>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-grid>
+            <ion-row>
+
+              <ion-card *ngFor="let cam of item.products" class="cardsmall ">
+                <ion-col [size]="item.col_size">
+                  <ion-slides pager="true" [options]="slideOpts">
+                      <ion-slide *ngFor="let item of item.products">
+                          <img [src]="cam.images[0]">
+                      </ion-slide>
+                    </ion-slides>
+                  <ion-card-header>
+                      <del>del</del>
+                    <ion-card-subtitle>{{cam.description}}</ion-card-subtitle>
+                  </ion-card-header>
+                </ion-col>
+              </ion-card>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
