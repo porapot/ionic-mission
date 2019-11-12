@@ -6,11 +6,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { CartPage } from './cart.page';
+import { CartService } from './cart.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: CartPage
+    component: CartPage,
+    resolve: {
+      carts:CartService
+    }
   }
 ];
 

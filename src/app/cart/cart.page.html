@@ -1,9 +1,51 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>cart</ion-title>
+    <ion-title>รถเข็น</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-text slot="icon-only">แก้ไข</ion-text>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-row *ngFor="let cart of data.carts">
+      <ion-col>
 
+        <ion-text>
+          {{cart.shopname}}
+        </ion-text>
+      </ion-col>
+      <ion-row *ngFor="let pro of cart.products">
+        <ion-col size="4">
+          <img [src]="pro.product_pic">
+        </ion-col>
+        <ion-col size="8">
+          <ion-text>{{pro.name}}</ion-text>
+          <ion-text>{{pro.color}}</ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-text>{{pro.price}}</ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-text>จำนวน{{pro.quantity}}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let gift of cart.products">
+        <ion-col size="4">
+          <ion-text>
+            ของแถม
+          </ion-text>
+        </ion-col>
+        <ion-col size="8" *ngFor="let gift1 of gift.gifts">
+          <ion-text>
+            {{gift1.gift_name}}
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-row>
+
+  </ion-card>
 </ion-content>
